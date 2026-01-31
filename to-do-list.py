@@ -1,11 +1,29 @@
 import os
 os.system("clear")
-
-
 print("TO DO LIST!")
+
 
 to_do=[]
 completed=[]
+
+
+def show(to,comp):
+    print("P E N D I N G...")
+    if len(to) == 0:
+        print("Empty!")
+    else:
+        for i, j in zip(range(len(to)), to):
+            print(i , j)
+
+    print("\n")
+
+    print("C O M P L E T E D...")
+    if len(comp) == 0:
+        print("Empty!")
+    else:
+        for i, j in zip(range(len(comp)), comp):
+            print(i , j)
+
 
 
 while True:
@@ -13,7 +31,7 @@ while True:
     print("(A)dd (R)emove (S)how (Q)uit (C)ompleted")
     user = input("Enter The Letter To : ").upper()
     print("\n-----------------------------")
-
+    os.system("clear")
 
 
     if user == 'A':
@@ -24,25 +42,13 @@ while True:
 
 
     elif user == 'S':
-        print("PENDINGs...")
-        if len(to_do) == 0:
-            print("Empty!")
-        else:
-            for i, j in zip(range(len(to_do)), to_do):
-                print(i , j)
-        print("\n")
-        print("COMPLETED...")
-        if len(completed) == 0:
-            print("Empty!")
-        else:
-            for i, j in zip(range(len(completed)), completed):
-                print(i , j)
-
-
+        show(to_do, completed)
 
 
     elif user == 'R':
-        print("will only remove from tasks that are pendings".upper())
+        show(to_do, completed)
+        print("\n-----------------------------")
+        print("will remove only tasks that are pending".upper())
         while True:
             try:
                 no = int(input("Enter The Number Of The Task : "))
@@ -51,9 +57,11 @@ while True:
             except:
                 print("Invalid Input! Try Again...")
                 break
-
+        os.system("clear")
 
     elif user == 'C':
+        show(to_do, completed)
+        print("\n-----------------------------")
         while True:
             try:
                 c = int(input("Enter The No. Of The Task You Completed : "))
@@ -64,18 +72,8 @@ while True:
             except:
                 print("Invalid Input! Try Again...")
                 break
-
+        os.system("clear")
 
 
     elif user == 'Q':
         break
-
-
-
-    else:
-        print(print("(A)dd (R)emove (S)how (Q)uit"))
-
-
-    
-
-
