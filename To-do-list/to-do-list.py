@@ -1,34 +1,31 @@
 import os
+
 os.system("clear")
 print("TO DO LIST!")
-
 
 to_do=[]
 completed=[]
 
-
-def show(to,comp):
+# the function will be used 3 times in elif condition : 'S' 'R' 'C'
+def show(pending, comp):
     print("P E N D I N G...")
-    if len(to) == 0:
+    if len(pending) == 0:
         print("Empty!")
     else:
-        for i, j in zip(range(len(to)), to):
-            print(i , j)
-
+        for i, j in zip(range(len(pending)), pending):
+            print(i ,'|', j)
     print("\n")
-
     print("C O M P L E T E D...")
     if len(comp) == 0:
         print("Empty!")
     else:
         for i, j in zip(range(len(comp)), comp):
-            print(i , j)
-
+            print(i ,'|', j)
 
 
 while True:
     print("\n-----------------------------\n")
-    print("(A)dd (R)emove (S)how (Q)uit (C)ompleted")
+    print("(A)dd (R)emove (S)how (C)ompleted (Q)uit")
     user = input("Enter The Letter To : ").upper()
     print("\n-----------------------------")
     os.system("clear")
@@ -38,7 +35,6 @@ while True:
         task = input("Enter The Task To Add : ")
         print("TASK ADDED!")
         to_do.append(task)
-
 
 
     elif user == 'S':
@@ -59,6 +55,7 @@ while True:
                 break
         os.system("clear")
 
+    
     elif user == 'C':
         show(to_do, completed)
         print("\n-----------------------------")
@@ -74,6 +71,9 @@ while True:
                 break
         os.system("clear")
 
-
+    
     elif user == 'Q':
         break
+
+    else:
+        print("Wrong Input, Try Again")
