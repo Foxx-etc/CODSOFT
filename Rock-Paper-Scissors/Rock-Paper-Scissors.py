@@ -2,23 +2,25 @@ import random as r
 import os
 import time
 
-#name of the player
-name = input("Enter Your Name : ")
-#for computer
-choose = ['ROCK', 'PAPER', 'SCISSOR']
+# clearing the screen to look visually better
+os.system("clear")
 
+#name of the player
+name = input("Enter Your Name : ").strip().upper()
+
+#for computer
+hand = ['ROCK', 'PAPER', 'SCISSOR']
 
 
 def play():
     os.system("clear")
-    print(f"WELCOME {name}!")
-    valid = []
+    print(f"WELCOME {name.upper()}!")
+    round = []
 
-
-    while len(valid) != 5:
+    while len(round) != 5:
         print("----------------------------------------")
         user = input("Enter ROCK, PAPER, SCISSOR : ").strip().upper()
-        computer = r.choice(choose)
+        computer = r.choice(hand)
         print("----------------------------------------")
 
 
@@ -29,28 +31,28 @@ def play():
                 print("IT's A TIE!\n")
 
 
-        elif user == 'ROCK' and computer == 'SCISSOR' or user == 'S' and computer == 'SCISSOR':
+        elif user == 'ROCK' and computer == 'SCISSOR' or user == 'SCISSOR' and computer == 'ROCK':
                 time.sleep(1)
                 print(f'{name}: {user}')
                 print(f'Computer: {computer}\n')
-                valid.append(1)
-                print(f'{name.upper()} , WON!' if user == 'R' else f'COMPUTER WON!\n')
+                print(f'{name} , WON!' if user == 'ROCK' and computer=='SCISSOR' else f'COMPUTER WON!\n')
+                round.append(1)
 
 
-        elif user == 'SCISSOR' and computer == 'PAPER' or user == 'PAPER' and computer == 'SCISSORP':
+        elif user == 'SCISSOR' and computer == 'PAPER' or user == 'PAPER' and computer == 'SCISSOR':
                 time.sleep(1)
                 print(f'{name}: {user}')
                 print(f'Computer: {computer}\n')
-                valid.append(1)
-                print(f'{name.upper()} , WON!' if user == 'R' else f'COMPUTER WON!\n')
+                print(f'{name} , WON!' if user == 'SCISSOR' and computer=='PAPER' else f'COMPUTER WON!\n')
+                round.append(1)
 
 
         elif user == 'PAPER' and computer == 'ROCK' or user == 'ROCK' and computer == 'PAPER':
                 time.sleep(1)
                 print(f'{name}: {user}')
                 print(f'Computer: {computer}\n')
-                valid.append(1)
-                print(f'{name.upper()} , WON!' if user == 'R' else f'COMPUTER WON!\n')
+                print(f'{name} , WON!' if user == 'PAPER' and computer=='ROCK' else f'COMPUTER WON!\n')
+                round.append(1)
 
 
         else:
@@ -60,8 +62,8 @@ def play():
 #intial
 play()
 
-while True:
 
+while True:
     play_again = input("Want To Play Again? (y/n) : ").strip().upper()
 
     if play_again == 'Y':
